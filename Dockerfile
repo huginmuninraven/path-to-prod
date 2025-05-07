@@ -12,5 +12,7 @@ USER $USER_UID
 WORKDIR /opt/python
 COPY ./run.py /opt/python/run.py
 COPY ./example_1.json /opt/python/example_1.json
-EXPOSE 8080
-CMD ["python3", "run.py"]
+EXPOSE 80
+
+# Gives unbuffered output
+CMD ["python3", "-u", "run.py"]

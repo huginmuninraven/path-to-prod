@@ -10,9 +10,11 @@
     - [TAG](#tag)
     - [Push](#push)
   - [Helm](#helm)
-    - [Create](#create)
+    - [Create Helm Chart](#create-helm-chart)
+    - [Configure Helm Chart](#configure-helm-chart)
     - [Package](#package)
-    - [Upgrade](#upgrade)
+    - [Alter Values File](#alter-values-file)
+    - [Install / Upgrade](#install--upgrade)
   - [Terraform](#terraform)
 
 
@@ -104,22 +106,41 @@ CMD ["python3", "run.py"]
 
 https://helm.sh/docs/intro/cheatsheet/
 
-### Create
+### Create Helm Chart
 https://helm.sh/docs/helm/helm_create/
 
 ```
-helm create 
+helm create python-parser
 ```
+
+### Configure Helm Chart
+- Remove Liveness/Readiness probe
+- Configure securityContext if needed https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod
+
 
 ### Package
 
 ```
-helm package --app-version 1 
+helm package --app-version 1 ./python-parser
 ```
 
-### Upgrade 
+### Alter Values File
+In a values file outside of the packaged Helm chart, set the image
+
+- Add image to values file.
+
+### Install / Upgrade 
 
 https://helm.sh/docs/helm/helm_upgrade/
+
+Run this command from within the helm chart. 
+
+``` bash
+helm upgrade  --install  python-container -f ./python-parser/values.yaml python-parser-0.1.0.tgz \
+--namespace=python-parser \
+--create-namespace
+```
+
 
 
 ## Terraform 

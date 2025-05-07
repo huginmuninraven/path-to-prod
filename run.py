@@ -1,4 +1,5 @@
 import json
+import time
 
 def main():
 
@@ -6,8 +7,10 @@ def main():
     with open('example_1.json', 'r') as file:
         data = json.load(file)
 
-    # Print the data
-    print(data)
+    while 1 != 0:
+        # Print the data every 10 seconds forever
+        print(data)
+        time.sleep(10)
 
 if __name__ == "__main__":
     main()
