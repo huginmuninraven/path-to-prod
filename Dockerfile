@@ -1,5 +1,6 @@
 FROM python:3.13.3-slim-bullseye
 
+# Set USER and USER_UID, and run as non-root
 # Begin User portion
 ARG USERNAME=PYTHON
 ARG USER_UID=1000
@@ -8,10 +9,11 @@ RUN groupadd --gid $USER_GID $USERNAME && useradd --uid $USER_UID --gid $USER_GI
 USER $USER_UID
 # End User setup
 
+# Use the below line if additional packages are needed
+# RUN pip install -r requirements.txt
 
 WORKDIR /opt/python
-COPY ./run.py /opt/python/run.py
-COPY ./example_1.json /opt/python/example_1.json
+COPY ./run.py ./example_1.json /opt/python/
 EXPOSE 80
 
 # Gives unbuffered output
