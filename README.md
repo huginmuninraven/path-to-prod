@@ -147,6 +147,13 @@ helm upgrade  --install  python-container -f ./python-parser/values.yaml python-
 
 Source: https://developer.hashicorp.com/terraform/tutorials/kubernetes/eks
 
+```
+terraform state pull
+
+terraform state show
+
 terraform plan
+
 terraform apply
+```
 
