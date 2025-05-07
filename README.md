@@ -1,5 +1,6 @@
 - [path-to-prod](#path-to-prod)
   - [Environment](#environment)
+    - [Connect VSCode to SSH host](#connect-vscode-to-ssh-host)
   - [Python](#python)
     - [Create a virtual environment for the project](#create-a-virtual-environment-for-the-project)
     - [Create a requirements.txt file](#create-a-requirementstxt-file)
@@ -28,6 +29,9 @@ A rough outline on how to get to production.
 - Check for k9s, [install](https://github.com/derailed/k9s/releases) if necessary
 - Check Kubernetes version
 - Look for a namespace to deploy, create one if necessary
+
+### Connect VSCode to SSH host
+https://code.visualstudio.com/docs/remote/ssh
 
 
 ## Python
