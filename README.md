@@ -52,7 +52,7 @@ pip install requirements.txt
 ```
 
 ### Author a script
-
+JSON Usage: https://docs.python.org/3/library/json.html#basic-usage  
 Code from here: https://www.geeksforgeeks.org/read-json-file-using-python/  
 Data file from here: https://json.org/example.html  
 
@@ -68,8 +68,18 @@ def main():
 
     while 1 != 0:
         # Print the data every 10 seconds forever
-        print(data)
+        # print(data)
+        
+        # Print individual element by specified key
+        print(data['fruit'])
+
+        # Print each key and value
+        for key, value in data.items():
+            print(key, value)
+
+    
         time.sleep(10)
+        
 
 if __name__ == "__main__":
     main()
