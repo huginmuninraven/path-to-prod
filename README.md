@@ -49,10 +49,10 @@ pip install requirements.txt
 
 ### Author a script
 
-Code from here: https://www.geeksforgeeks.org/read-json-file-using-python/
-Data file from here: https://json.org/example.html
+Code from here: https://www.geeksforgeeks.org/read-json-file-using-python/  
+Data file from here: https://json.org/example.html  
 
-```
+``` python
 import json
 import time
 
@@ -78,7 +78,7 @@ if __name__ == "__main__":
 ### Non-Root user
 #### Sources
 https://code.visualstudio.com/remote/advancedcontainers/add-nonroot-user#_creating-a-nonroot-user
-https://www.docker.com/blog/understanding-the-docker-user-instruction/
+https://www.docker.com/blog/understanding-the-docker-user-instruction/  
 
 ``` bash
 FROM python:3.13.3
