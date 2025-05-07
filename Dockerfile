@@ -1,4 +1,4 @@
-FROM python:3.13.3-bullseye
+FROM python:3.13.3-slim-bullseye
 
 # Begin User portion
 ARG USERNAME=PYTHON
