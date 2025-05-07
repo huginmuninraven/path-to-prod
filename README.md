@@ -6,6 +6,7 @@
     - [Author a script](#author-a-script)
   - [Docker](#docker)
     - [Non-Root user](#non-root-user)
+      - [Sources](#sources)
     - [Build](#build)
     - [TAG](#tag)
     - [Push](#push)
@@ -53,13 +54,21 @@ Data file from here: https://json.org/example.html
 
 ```
 import json
+import time
 
-# Open and read the JSON file
-with open('data.json', 'r') as file:
-    data = json.load(file)
+def main():
 
-# Print the data
-print(data)
+    # Open and read the JSON file
+    with open('example_1.json', 'r') as file:
+        data = json.load(file)
+
+    while 1 != 0:
+        # Print the data every 10 seconds forever
+        print(data)
+        time.sleep(10)
+
+if __name__ == "__main__":
+    main()
 ```
 
 
@@ -67,7 +76,7 @@ print(data)
 ## Docker
 
 ### Non-Root user
-####" Sources
+#### Sources
 https://code.visualstudio.com/remote/advancedcontainers/add-nonroot-user#_creating-a-nonroot-user
 https://www.docker.com/blog/understanding-the-docker-user-instruction/
 
