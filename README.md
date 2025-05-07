@@ -6,8 +6,9 @@
     - [Create a requirements.txt file](#create-a-requirementstxt-file)
     - [Author a script](#author-a-script)
   - [Docker](#docker)
-    - [Non-Root user](#non-root-user)
+    - [Non-Root user Dockerfile](#non-root-user-dockerfile)
       - [Sources](#sources)
+    - [Login](#login)
     - [Build](#build)
     - [TAG](#tag)
     - [Push](#push)
@@ -32,7 +33,6 @@ A rough outline on how to get to production.
 
 ### Connect VSCode to SSH host
 https://code.visualstudio.com/docs/remote/ssh
-
 
 
 
@@ -91,18 +91,15 @@ if __name__ == "__main__":
 
 ## Docker
 
-### Non-Root user
+### Non-Root user Dockerfile
 #### Sources
 https://code.visualstudio.com/remote/advancedcontainers/add-nonroot-user#_creating-a-nonroot-user
 https://www.docker.com/blog/understanding-the-docker-user-instruction/  
 
 ``` bash
-FROM python:3.13.3
+FROM python:3.13.3-slim-bullseye
 
-# install app dependencies
-# RUN apt-get update && apt-get install -y python3 python3-pip
-# RUN pip install requirements.txt
-
+# Set USER and USER_UID, and run as non-root
 # Begin User portion
 ARG USERNAME=PYTHON
 ARG USER_UID=1000
@@ -111,11 +108,23 @@ RUN groupadd --gid $USER_GID $USERNAME && useradd --uid $USER_UID --gid $USER_GI
 USER $USER_UID
 # End User setup
 
+# Use the below line if additional packages are needed
+# RUN pip install -r requirements.txt
+
 WORKDIR /opt/python
-COPY ./run.py /opt/python/run.py
-EXPOSE 8080
-CMD ["python3", "run.py"]
+COPY ./run.py ./example_1.json /opt/python/
+EXPOSE 80
+
+# Gives unbuffered output
+CMD ["python3", "-u", "run.py"]
 ```
+
+### Login
+docker login registry
+FROM python:3.13.3-slim-bullseye
+
+ECR instructions
+https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html
 
 ### Build
 `docker build .`
