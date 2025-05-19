@@ -120,8 +120,8 @@ CMD ["python3", "-u", "run.py"]
 ```
 
 ### Login
-docker login registry
-FROM python:3.13.3-slim-bullseye
+`docker login registry`  
+
 
 ECR instructions
 https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html
@@ -182,6 +182,8 @@ helm upgrade  --install  python-container -f ./python-parser/values.yaml python-
 Source: https://developer.hashicorp.com/terraform/tutorials/kubernetes/eks
 
 ```
+terraform init
+
 terraform state pull
 
 terraform state show
@@ -190,4 +192,3 @@ terraform plan
 
 terraform apply
 ```
-
